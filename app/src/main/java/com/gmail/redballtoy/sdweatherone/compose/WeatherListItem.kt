@@ -28,14 +28,17 @@ import com.gmail.redballtoy.sdweatherone.utils.getTemperature
 import com.gmail.redballtoy.sdweatherone.utils.getWeatherIcon
 
 @Composable
-fun WeatherListItem(item: WeatherModel, currentDay: MutableState<WeatherModel>) {
+fun WeatherListItem(
+    item: WeatherModel,
+    currentDay: MutableState<WeatherModel>
+) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
             .alpha(ALPHA_SCREEN)
             .padding(top = 2.dp)
             .clickable {
-               currentDay.value = item
+                currentDay.value = item
             },
         colors = CardDefaults.cardColors(BlueLight),
         elevation = CardDefaults.cardElevation(4.dp),

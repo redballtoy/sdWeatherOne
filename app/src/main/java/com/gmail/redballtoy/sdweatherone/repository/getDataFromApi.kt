@@ -13,14 +13,13 @@ import com.gmail.redballtoy.sdweatherone.data.getWeatherByDays
 const val myLog = "myLog"
 
 fun getDataFromApi(
-    city: String?,
-    gistitude: String?,
+    cityOrCoordinate:String,
     context: Context,
     daysList: MutableState<List<WeatherModel>>,
     currentDay: MutableState<WeatherModel>
 ) {
     val url = "https://api.weatherapi.com/v1/forecast.json?key=$API_KEY" +
-            "&q=${city ?: gistitude}" +
+            "&q=${cityOrCoordinate}" +
             "&days=" +
             "10" +
             "&aqi=no&alerts=no"

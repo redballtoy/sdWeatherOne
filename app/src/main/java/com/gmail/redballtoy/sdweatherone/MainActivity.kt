@@ -12,7 +12,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.gmail.redballtoy.sdweatherone.compose.DialogSearch
 import com.gmail.redballtoy.sdweatherone.compose.MainCardComp
@@ -24,8 +23,7 @@ import com.gmail.redballtoy.sdweatherone.utils.getBackWeatherIcon
 
 class MainActivity : ComponentActivity() {
 
-    var city: String? = null
-    var gistitude: String? = "55.899146,37.620878"
+    private val cityOrCoordinate: String = "55.899146,37.620878"
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,11 +36,6 @@ class MainActivity : ComponentActivity() {
                 val dialogState = remember {
                     mutableStateOf(false)
                 }
-                if (dialogState.value) {
-                    DialogSearch(dialogState, onSubmit = {
-
-                    })
-                }
 
                 val currentDay = remember {
                     mutableStateOf(
@@ -52,7 +45,14 @@ class MainActivity : ComponentActivity() {
                         )
                     )
                 }
-                getDataFromApi(city, gistitude, this, daysList, currentDay)
+                if (dialogState.value) {
+                    DialogSearch(dialogState, onSubmit = {
+                        getDataFromApi(it, this, daysList, currentDay)
+                    })
+                }
+                if (currentDay.value.city.isEmpty()) {
+                    getDataFromApi(cityOrCoordinate, this, daysList, currentDay)
+                }
                 Image(
                     painter = painterResource(getBackWeatherIcon(currentDay.value.weatherCondition)),
                     contentDescription = currentDay.value.weatherCondition,
@@ -66,7 +66,7 @@ class MainActivity : ComponentActivity() {
                 ) {
                     MainCardComp(currentDay,
                         onClickSync = {
-                            getDataFromApi(city, gistitude, this@MainActivity, daysList, currentDay)
+                            getDataFromApi(cityOrCoordinate, this@MainActivity, daysList, currentDay)
                         },
                         onClickSearch = {
                             dialogState.value = true
