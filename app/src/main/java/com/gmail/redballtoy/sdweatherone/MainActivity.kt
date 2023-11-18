@@ -40,7 +40,7 @@ class MainActivity : ComponentActivity() {
                 getDataFromApi(null, "55.899146,37.620878", this, daysList,currentDay)
                 Image(
                     painter = painterResource(getBackWeatherIcon(currentDay.value.weatherCondition)),
-                    contentDescription = stringResource(R.string.sunny),
+                    contentDescription = currentDay.value.weatherCondition,
                     modifier = Modifier.fillMaxSize(),
                     //add stretch on screen
                     contentScale = ContentScale.Crop

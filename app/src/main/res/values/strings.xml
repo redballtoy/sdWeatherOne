@@ -1,14 +1,7 @@
 <resources>
-    <string name="app_name">sdWeatherOne</string>
+    <string name="app_name">sdWeather</string>
     <string name="days">Days</string>
     <string name="hours">Hours</string>
     <string name="icon_syncs">icon syncs</string>
     <string name="icon_search">icon search</string>
-    <string name="clear">clear</string>
-    <string name="muraveyka">Muraveyka</string>
-    <string name="sunny">sunny</string>
-    <string name="sample_date">19 октября 2023 г. 21:33</string>
-    <string name="current_temperature">+16°</string>
-    <string name="weather_type">clear</string>
-    <string name="max_min_temperature">+23°/+12°</string>
 </resources>
