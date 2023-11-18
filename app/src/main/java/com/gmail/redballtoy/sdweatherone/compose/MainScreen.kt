@@ -50,7 +50,9 @@ const val API_KEY = "987b9b98929e4e3aa3a74358221905"
 @Composable
 fun MainCardComp(
     currentDay: MutableState<WeatherModel>,
-    onClickSync:()-> Unit
+    onClickSync:()-> Unit,
+    onClickSearch:()-> Unit,
+
 ) {
     Column(
     ) {
@@ -110,7 +112,9 @@ fun MainCardComp(
                     horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    IconButton(onClick = { /*TODO*/ }) {
+                    IconButton(onClick = {
+                        onClickSearch.invoke()
+                    }) {
                         Image(
                             modifier = Modifier.size(36.dp),
                             painter = painterResource(id = R.drawable.ic_search),

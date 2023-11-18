@@ -35,7 +35,7 @@ fun WeatherListItem(item: WeatherModel, currentDay: MutableState<WeatherModel>) 
             .alpha(ALPHA_SCREEN)
             .padding(top = 2.dp)
             .clickable {
-                currentDay.value = item
+               currentDay.value = item
             },
         colors = CardDefaults.cardColors(BlueLight),
         elevation = CardDefaults.cardElevation(4.dp),

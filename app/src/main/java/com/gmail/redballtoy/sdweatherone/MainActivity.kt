@@ -14,6 +14,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.gmail.redballtoy.sdweatherone.compose.DialogSearch
 import com.gmail.redballtoy.sdweatherone.compose.MainCardComp
 import com.gmail.redballtoy.sdweatherone.compose.TabLayout
 import com.gmail.redballtoy.sdweatherone.data.WeatherModel
@@ -34,6 +35,15 @@ class MainActivity : ComponentActivity() {
                 val daysList = remember {
                     mutableStateOf(listOf<WeatherModel>())
                 }
+                val dialogState = remember {
+                    mutableStateOf(false)
+                }
+                if (dialogState.value) {
+                    DialogSearch(dialogState, onSubmit = {
+
+                    })
+                }
+
                 val currentDay = remember {
                     mutableStateOf(
                         WeatherModel(
@@ -54,9 +64,13 @@ class MainActivity : ComponentActivity() {
                 Column(
                     modifier = Modifier.padding(4.dp)
                 ) {
-                    MainCardComp(currentDay, onClickSync = {
-                        getDataFromApi(city, gistitude, this@MainActivity, daysList, currentDay)
-                    })
+                    MainCardComp(currentDay,
+                        onClickSync = {
+                            getDataFromApi(city, gistitude, this@MainActivity, daysList, currentDay)
+                        },
+                        onClickSearch = {
+                            dialogState.value = true
+                        })
                     TabLayout(daysList, currentDay)
                 }
             }
