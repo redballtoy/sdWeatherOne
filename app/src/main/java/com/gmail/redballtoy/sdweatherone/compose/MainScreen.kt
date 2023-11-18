@@ -49,7 +49,8 @@ const val API_KEY = "987b9b98929e4e3aa3a74358221905"
 @Preview(showBackground = true)
 @Composable
 fun MainCardComp(
-    currentDay: MutableState<WeatherModel>
+    currentDay: MutableState<WeatherModel>,
+    onClickSync:()-> Unit
 ) {
     Column(
     ) {
@@ -124,7 +125,9 @@ fun MainCardComp(
                         color = Color.White,
                     )
 
-                    IconButton(onClick = { /*TODO*/ }) {
+                    IconButton(onClick = {
+                        onClickSync.invoke()
+                    }) {
                         Image(
                             modifier = Modifier.size(36.dp),
                             painter = painterResource(id = R.drawable.ic_synck),

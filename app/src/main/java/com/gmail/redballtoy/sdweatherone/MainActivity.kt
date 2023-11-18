@@ -22,6 +22,11 @@ import com.gmail.redballtoy.sdweatherone.ui.theme.SdWeatherOneTheme
 import com.gmail.redballtoy.sdweatherone.utils.getBackWeatherIcon
 
 class MainActivity : ComponentActivity() {
+
+    var city: String? = null
+    var gistitude: String? = "55.899146,37.620878"
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -33,11 +38,11 @@ class MainActivity : ComponentActivity() {
                     mutableStateOf(
                         WeatherModel(
                             "", "", "", "", "", "",
-                            "", "", "", "",""
+                            "", "", "", "", ""
                         )
                     )
                 }
-                getDataFromApi(null, "55.899146,37.620878", this, daysList,currentDay)
+                getDataFromApi(city, gistitude, this, daysList, currentDay)
                 Image(
                     painter = painterResource(getBackWeatherIcon(currentDay.value.weatherCondition)),
                     contentDescription = currentDay.value.weatherCondition,
@@ -49,8 +54,10 @@ class MainActivity : ComponentActivity() {
                 Column(
                     modifier = Modifier.padding(4.dp)
                 ) {
-                    MainCardComp(currentDay)
-                    TabLayout(daysList,currentDay)
+                    MainCardComp(currentDay, onClickSync = {
+                        getDataFromApi(city, gistitude, this@MainActivity, daysList, currentDay)
+                    })
+                    TabLayout(daysList, currentDay)
                 }
             }
         }
