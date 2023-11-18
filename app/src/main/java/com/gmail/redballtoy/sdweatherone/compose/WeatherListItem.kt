@@ -1,6 +1,7 @@
 package com.gmail.redballtoy.sdweatherone.compose
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -12,6 +13,7 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
@@ -26,12 +28,15 @@ import com.gmail.redballtoy.sdweatherone.utils.getTemperature
 import com.gmail.redballtoy.sdweatherone.utils.getWeatherIcon
 
 @Composable
-fun WeatherListItem(item: WeatherModel) {
+fun WeatherListItem(item: WeatherModel, currentDay: MutableState<WeatherModel>) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
             .alpha(ALPHA_SCREEN)
-            .padding(top = 2.dp),
+            .padding(top = 2.dp)
+            .clickable {
+                currentDay.value = item
+            },
         colors = CardDefaults.cardColors(BlueLight),
         elevation = CardDefaults.cardElevation(4.dp),
         shape = RoundedCornerShape(ROUNDED_CORNER.dp / 2)
@@ -65,7 +70,8 @@ fun WeatherListItem(item: WeatherModel) {
                 painter = painterResource(getWeatherIcon(item.weatherCondition)),
                 contentDescription = "$item.weatherCondition"
             )
-            Text(text = "80%",
+            Text(
+                text = "80%",
                 color = Color.White,
                 fontSize = TextUnit(14f, TextUnitType.Sp)
             )

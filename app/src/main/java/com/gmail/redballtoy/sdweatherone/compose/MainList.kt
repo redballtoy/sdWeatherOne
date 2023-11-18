@@ -16,7 +16,7 @@ fun MainList(list:List<WeatherModel>, currentDay: MutableState<WeatherModel>){
         itemsIndexed(
             list
         ) { _, item ->
-            WeatherListItem(item = item)
+            WeatherListItem(item = item,currentDay)
         }
 
     }
