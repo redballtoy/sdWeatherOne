@@ -194,7 +194,9 @@ fun TabLayout(dayList: MutableState<List<WeatherModel>>, currentDay: MutableStat
         ) { tabIndex ->
             val listWeatherForecast=when(tabIndex){
                 0-> getWeatherByHours(currentDay.value.hours)
-                1-> dayList.value
+                1-> {
+                    dayList.value
+                }
                 else -> dayList.value
             }
 

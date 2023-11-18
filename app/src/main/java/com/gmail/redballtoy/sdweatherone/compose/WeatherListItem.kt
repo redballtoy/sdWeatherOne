@@ -71,7 +71,8 @@ fun WeatherListItem(item: WeatherModel, currentDay: MutableState<WeatherModel>) 
                 contentDescription = "$item.weatherCondition"
             )
             Text(
-                text = "80%",
+                text = if (item.changeOfPrecipitation.isEmpty()) ""
+                else "${item.changeOfPrecipitation}%",
                 color = Color.White,
                 fontSize = TextUnit(14f, TextUnitType.Sp)
             )
