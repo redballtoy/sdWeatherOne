@@ -22,7 +22,7 @@ fun getWeatherByDays(response: String): List<WeatherModel> {
             val item = forecastDays[i] as JSONObject
             wmList.add(
                 WeatherModel(
-                    item.getString("date"),
+                    item.getString("date").toString().replace("-","."),
                     locationObj.getString("name"),
                     locationObj.getString("region"),
                     currentDayObj.getString("last_updated"),

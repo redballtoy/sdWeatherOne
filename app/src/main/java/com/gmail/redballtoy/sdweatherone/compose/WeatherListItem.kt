@@ -73,7 +73,7 @@ fun WeatherListItem(
                         //ifEmpty true forecast by hours otherwise by days
                         text = getTemperature(item),
                         color = Color.White,
-                        fontSize = TextUnit(28f, TextUnitType.Sp)
+                        fontSize = TextUnit(24f, TextUnitType.Sp)
                     )
                 }
                 Row(
@@ -98,6 +98,7 @@ fun WeatherListItem(
                 )
             }
                 Text(
+                    modifier = Modifier.padding(end = 4.dp),
                     text = if (item.changeOfPrecipitation.isEmpty()) ""
                     else "${item.changeOfPrecipitation}%",
                     color = Color.White,

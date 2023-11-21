@@ -14,10 +14,10 @@ fun getWeatherByHours(hours: String): List<WeatherModel> {
         val item = hoursArray[i] as JSONObject
         list.add(
             WeatherModel(
-                item.getString("time"),
+                item.getString("time").toString().replace("-","."),
                 "",
                 "",
-                item.getString("time"),
+                item.getString("time").toString().replace("-","."),
                 convertTempToInt(item.getString("temp_c")),
                 convertTempToInt(item.getString("feelslike_c")),
                 item.getJSONObject("condition").getString("text"),
