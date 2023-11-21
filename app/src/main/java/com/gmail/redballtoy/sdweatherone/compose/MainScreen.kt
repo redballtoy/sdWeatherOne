@@ -87,10 +87,15 @@ fun MainCardComp(
 
                 }
                 Text(
-                    text = "${currentDay.value.city} (${currentDay.value.region})",
+                    text = "${currentDay.value.city}",
                     fontSize = TextUnit(36f, TextUnitType.Sp),
                     color = Color.White,
-                    modifier = Modifier.padding(bottom = 8.dp)
+                )
+                Text(
+                    text = "${currentDay.value.region}",
+                    fontSize = TextUnit(24f, TextUnitType.Sp),
+                    color = Color.White,
+                    modifier = Modifier.padding(bottom = 4.dp)
                 )
                 Text(
                     text = "${convertTempToInt(currentDay.value.currentTemp)}°C " +
