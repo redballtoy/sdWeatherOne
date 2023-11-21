@@ -60,8 +60,8 @@ fun DialogSearch(
 
 fun searchText(it: String): String {
     return when (it) {
-        "myt" -> "55.899146,37.620878"
-        "mur" -> "57.062393,38.887889"
+        "Myt" -> "55.899146,37.620878"
+        "Mur" -> "57.062393,38.887889"
         else -> it
     }
 }

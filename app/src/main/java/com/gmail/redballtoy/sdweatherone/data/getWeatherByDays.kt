@@ -25,7 +25,7 @@ fun getWeatherByDays(response: String): List<WeatherModel> {
                     item.getString("date").toString().replace("-","."),
                     locationObj.getString("name"),
                     locationObj.getString("region"),
-                    currentDayObj.getString("last_updated"),
+                    currentDayObj.getString("last_updated").toString().replace("-","."),
                     if (i == 0) currentDayObj.getString("temp_c") else "",
                     if (i == 0) currentDayObj.getString("feelslike_c") else "",
                     item.getJSONObject("day").getJSONObject("condition").getString("text"),
