@@ -44,24 +44,25 @@ fun WeatherListItem(
         elevation = CardDefaults.cardElevation(4.dp),
         shape = RoundedCornerShape(ROUNDED_CORNER.dp / 2)
     ) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(4.dp)
+        ) {
+
+        }
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(4.dp),
+                .padding(top = 4.dp, start = 4.dp, end = 4.dp),
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
 
         ) {
-            Column {
-                Text(
-                    text = item.time,
-                    color = Color.White
-                )
-                Text(
-                    text = item.weatherCondition,
-                    color = Color.White
-                )
-            }
+            Text(
+                text = item.time,
+                color = Color.White
+            )
             Text(
                 //ifEmpty true forecast by hours otherwise by days
                 text = getTemperature(item),
@@ -78,6 +79,16 @@ fun WeatherListItem(
                 else "${item.changeOfPrecipitation}%",
                 color = Color.White,
                 fontSize = TextUnit(14f, TextUnitType.Sp)
+            )
+        }
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(bottom = 4.dp),
+        ){
+            Text(
+                text = item.weatherCondition,
+                color = Color.White
             )
         }
 

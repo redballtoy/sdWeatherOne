@@ -52,7 +52,6 @@ fun MainCardComp(
     currentDay: MutableState<WeatherModel>,
     onClickSync:()-> Unit,
     onClickSearch:()-> Unit,
-
 ) {
     Column(
     ) {
