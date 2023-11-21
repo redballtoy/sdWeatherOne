@@ -12,6 +12,7 @@ fun getWeatherIcon(weatherCondition: String): Int {
         "Light snow" -> R.drawable.light_snow
         "Heavy snow" -> R.drawable.hard_snow
         "Light snow showers" -> R.drawable.light_snow
+        "Patchy moderate snow" -> R.drawable.light_snow
         "Moderate or heavy snow showers" -> R.drawable.hard_snow
         else -> R.drawable.sunny
     }

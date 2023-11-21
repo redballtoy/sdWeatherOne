@@ -1,9 +1,12 @@
 package com.gmail.redballtoy.sdweatherone.compose
 
+import android.content.res.Resources.Theme
+import android.graphics.ColorSpace
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.AlertDialogDefaults
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.CheckboxDefaults
 import androidx.compose.material3.Text
@@ -14,6 +17,11 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.TextUnit
+import androidx.compose.ui.unit.TextUnitType
+import com.gmail.redballtoy.sdweatherone.R
+import com.gmail.redballtoy.sdweatherone.ui.theme.BlueLight
 
 @Composable
 fun DialogSearch(
@@ -24,16 +32,17 @@ fun DialogSearch(
         mutableStateOf("")
     }
 
-    AlertDialog(onDismissRequest = {
-        dialogState.value = false
-    },
+    AlertDialog(
+        onDismissRequest = {
+            dialogState.value = false
+        },
         confirmButton = {
             TextButton(onClick = {
                 onSubmit(dialogText.value)
                 dialogState.value = false
 
             }) {
-                Text(text = "Ok")
+                Text(text = "Ok", color = Color.White, fontSize = TextUnit(24f, TextUnitType.Sp))
             }
         },
         dismissButton = {
@@ -41,7 +50,11 @@ fun DialogSearch(
                 dialogState.value = false
 
             }) {
-                Text(text = "Cancel")
+                Text(
+                    text = "Cancel",
+                    color = Color.White,
+                    fontSize = TextUnit(24f, TextUnitType.Sp)
+                )
             }
         },
         title = {
@@ -49,12 +62,16 @@ fun DialogSearch(
                 modifier = Modifier
                     .fillMaxWidth()
             ) {
-                Text(text = "City or coordinate")
+                Text(
+                    text = "City or coordinate",
+                    color = Color.White
+                )
                 TextField(value = dialogText.value, onValueChange = {
                     dialogText.value = searchText(it)
                 })
             }
-        }
+        },
+        containerColor = Color(R.color.blue_light)
     )
 }
 
