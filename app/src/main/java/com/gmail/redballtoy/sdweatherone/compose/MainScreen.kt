@@ -80,7 +80,7 @@ fun MainCardComp(
                         color = Color.White,
                     )
                     Image(
-                        modifier = Modifier.size(56.dp),
+                        modifier = Modifier.size(64.dp),
                         painter = painterResource(getWeatherIcon(currentDay.value.weatherCondition)),
                         contentDescription = currentDay.value.weatherCondition
                     )

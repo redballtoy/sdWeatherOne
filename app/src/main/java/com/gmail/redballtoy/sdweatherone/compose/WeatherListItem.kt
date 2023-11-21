@@ -44,54 +44,68 @@ fun WeatherListItem(
         elevation = CardDefaults.cardElevation(4.dp),
         shape = RoundedCornerShape(ROUNDED_CORNER.dp / 2)
     ) {
-        Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(4.dp)
-        ) {
-
-        }
         Row(
             modifier = Modifier
-                .fillMaxWidth()
-                .padding(top = 4.dp, start = 4.dp, end = 4.dp),
+                .fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
-
         ) {
-            Text(
-                text = item.time,
-                color = Color.White
-            )
-            Text(
-                //ifEmpty true forecast by hours otherwise by days
-                text = getTemperature(item),
-                color = Color.White,
-                fontSize = TextUnit(28f, TextUnitType.Sp)
-            )
-            Image(
-                modifier = Modifier.size(34.dp),
-                painter = painterResource(getWeatherIcon(item.weatherCondition)),
-                contentDescription = "$item.weatherCondition"
-            )
-            Text(
-                text = if (item.changeOfPrecipitation.isEmpty()) ""
-                else "${item.changeOfPrecipitation}%",
-                color = Color.White,
-                fontSize = TextUnit(14f, TextUnitType.Sp)
-            )
-        }
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(bottom = 4.dp),
-        ){
-            Text(
-                text = item.weatherCondition,
-                color = Color.White
-            )
-        }
 
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth(0.6f)
+
+            ) {
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+
+                ) {
+
+                    Text(
+                        modifier = Modifier.padding(start = 4.dp,top=4.dp, end = 4.dp),
+                        text = item.time,
+                        color = Color.White
+                    )
+                    Text(
+                        //ifEmpty true forecast by hours otherwise by days
+                        text = getTemperature(item),
+                        color = Color.White,
+                        fontSize = TextUnit(28f, TextUnitType.Sp)
+                    )
+                }
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                   ) {
+                    Text(
+                        modifier = Modifier.padding(start = 4.dp),
+                        text = item.weatherCondition,
+                        color = Color.White
+                    )
+                }
+            }
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth(0.4f)
+            ) {
+                Image(
+                    modifier = Modifier.size(64.dp),
+                    painter = painterResource(getWeatherIcon(item.weatherCondition)),
+                    contentDescription = "$item.weatherCondition"
+                )
+            }
+                Text(
+                    text = if (item.changeOfPrecipitation.isEmpty()) ""
+                    else "${item.changeOfPrecipitation}%",
+                    color = Color.White,
+                    fontSize = TextUnit(14f, TextUnitType.Sp)
+                )
+            }
+
+        }
     }
-}
+
 
