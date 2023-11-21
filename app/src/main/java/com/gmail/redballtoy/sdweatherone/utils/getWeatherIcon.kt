@@ -20,7 +20,7 @@ fun getWeatherIcon(weatherCondition: String): Int {
 
 fun getBackWeatherIcon(weatherCondition: String): Int {
     return when (weatherCondition) {
-        "Clear" -> R.drawable.sunny_back
+        "Clear","Sunny" -> R.drawable.sunny_back
         else -> R.drawable.cloudly_back
     }
 }
