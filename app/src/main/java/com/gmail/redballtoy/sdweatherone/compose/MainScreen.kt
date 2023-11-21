@@ -98,8 +98,13 @@ fun MainCardComp(
                     modifier = Modifier.padding(bottom = 4.dp)
                 )
                 Text(
-                    text = "${convertTempToInt(currentDay.value.currentTemp)}°C " +
-                            "как ${convertTempToInt(currentDay.value.feelsLikeTemp)}°С",
+
+                    text = if(convertTempToInt(currentDay.value.currentTemp).isEmpty() and
+                        convertTempToInt(currentDay.value.feelsLikeTemp).isEmpty()) {currentDay.value.time}
+                    else {
+                        "${convertTempToInt(currentDay.value.currentTemp)}°C " +
+                                "как ${convertTempToInt(currentDay.value.feelsLikeTemp)}°С"
+                    },
                     fontSize = TextUnit(32f, TextUnitType.Sp),
                     color = Color.White,
                     modifier = Modifier.padding(bottom = 8.dp)
